@@ -1,0 +1,10 @@
+source 'http://rubygems.org'
+
+gem 'pry'
+gem 'sinatra'
+gem 'shotgun'
+gem 'eventmachine'
+gem 'coffee-script'
+gem 'therubyracer'
+gem 'em-websocket'
+gem 'sanitize'
