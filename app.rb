@@ -8,11 +8,11 @@ get '/' do
 end
 
 
-get '/scripts/:name' do
+get '/scripts/js/:name' do
   content_type 'text/javascript'
   ext = params[:name].split('.').last
   if ext == 'js'
-    File.read("scripts/#{params[:name]}")
+    File.read("scripts/js/#{params[:name]}")
   elsif ext == 'coffee'
     puts "Compiling #{params[:name]}"
     CoffeeScript.compile File.read("scripts/#{params[:name]}")

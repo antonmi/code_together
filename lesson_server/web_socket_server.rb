@@ -22,7 +22,7 @@ module WebSocketServer
         require 'user'
 
         puts 'Starting WebSocket Server'
-        EventMachine::WebSocket.start(:host => '192.168.1.2', :port => 8080) do |ws|
+        EventMachine::WebSocket.start(host: SERVER_HOST, port: SERVER_PORT) do |ws|
           ws.onopen do
             puts 'Connection opened'
           end

@@ -17,15 +17,15 @@
 <div>
   <%= erb :room %>
 </div>
-<script type="text/javascript" src='/scripts/coffee/room.coffee'></script>
-<script type="text/javascript" src='/scripts/coffee/web_socket_client.coffee'></script>
-<script type="text/javascript" src='/scripts/coffee/chat.coffee'></script>
-<script type="text/javascript" src='/scripts/coffee/info_bar.coffee'></script>
+<script type="text/javascript" src='/scripts/js/room.js'></script>
+<script type="text/javascript" src='/scripts/js/web_socket_client.js'></script>
+<script type="text/javascript" src='/scripts/js/chat.js'></script>
+<script type="text/javascript" src='/scripts/js/info_bar.js'></script>
 <script type="text/javascript" src='/scripts/js/diff_match_patch.js'></script>
-<script type="text/javascript" src='/scripts/coffee/text_editor.coffee'></script>
+<script type="text/javascript" src='/scripts/js/text_editor.js'></script>
 <script type="text/javascript">
     $(function(){
-        new Room('ws:192.168.1.2:8080', $('#room_id').html(), $('#user_id').html())
+        new Room('ws:localhost:8080', $('#room_id').html(), $('#user_id').html())
     })
 </script>
 </body>
