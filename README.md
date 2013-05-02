@@ -1,3 +1,1 @@
-code_together
-=============
-[a link](http://antonmi.github.io/code_together)
+[code_together](http://antonmi.github.io/code_together)
