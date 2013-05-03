@@ -55,7 +55,7 @@ class Launcher
 end
 
 # Process name of your daemon
-$0 = "lesson server"
+$0 = "server"
 
 # Spawn a deamon
 Launcher.start fork, 'tmp/pids/server.pid', 'log/server.stdout.log', 'log/server.stderr.log'
