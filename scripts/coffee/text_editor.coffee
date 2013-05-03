@@ -72,11 +72,13 @@ class window.TextEditor
 
   set_text: (text) ->
     @editor.setCursor(@editor.getCursor()) #should deselect
+    history = @editor.getHistory()
     @editor.replaceSelection('\u5555\u6666\u7777')
     @old_text = @get_text()
     @merge_texts(text)
     @editor.setValue(@new_text)
     @return_cursor()
+    @editor.setHistory(history)
     @old_old_text = @get_text()
     @can_send = true
 

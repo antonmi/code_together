@@ -127,12 +127,16 @@
     };
 
     TextEditor.prototype.set_text = function(text) {
+      var history;
+
       this.editor.setCursor(this.editor.getCursor());
+      history = this.editor.getHistory();
       this.editor.replaceSelection('\u5555\u6666\u7777');
       this.old_text = this.get_text();
       this.merge_texts(text);
       this.editor.setValue(this.new_text);
       this.return_cursor();
+      this.editor.setHistory(history);
       this.old_old_text = this.get_text();
       return this.can_send = true;
     };
