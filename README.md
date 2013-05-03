@@ -10,4 +10,4 @@ Basic technologies:
 
 See demo here: [code_together](http://antonmi.github.io/code_together) (in development)
 
-If you happy with this simple demo, please visit [live-study.ru](http://live-study.ru) (in russian, still in development) to see how we try to use collaborative tools for education.
+If you happy with this simple demo, please visit [live-study.ru](http://live-study.ru) (in russian, in development) to see how we try to use collaborative tools for education.
