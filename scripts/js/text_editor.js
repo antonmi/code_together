@@ -17,7 +17,7 @@
     }
 
     TextEditor.prototype.add_html = function() {
-      var key, options, value, _ref;
+      var key, options, value;
 
       options = [];
       _ref = CodeMirror.modes;
@@ -111,7 +111,6 @@
     };
 
     TextEditor.prototype.message_received = function(message) {
-      console.log(message);
       if (message['new_text'] !== void 0) {
         if (message['history'] === 'true') {
           this.editor.setValue(message['new_text']);
