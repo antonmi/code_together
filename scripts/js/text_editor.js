@@ -9,15 +9,18 @@
       this.old_old_text = this.default_text;
       this.max_size = 50000;
       this.can_send = true;
-      window.te = this;
-      window.ck = this.ckeditor;
+      this.add_html();
       this.init_code_mirror();
       this.editor.setValue(this.default_text);
       this.config_callbacks();
     }
 
+    TextEditor.prototype.add_html = function() {
+      return $('#text_editor_div').html('<textarea rows="6" id="text_editor"></textarea>');
+    };
+
     TextEditor.prototype.init_code_mirror = function() {
-      this.editor = CodeMirror.fromTextArea(document.getElementById("texteditor"), {
+      this.editor = CodeMirror.fromTextArea(document.getElementById("text_editor"), {
         mode: "text/x-ruby",
         indentUnit: 2
       });

@@ -4,10 +4,15 @@
     function Chat($chat_div, room) {
       this.$chat_div = $chat_div;
       this.room = room;
+      this.add_html();
       this.init_elements();
       this.init_history();
       this.init_actions();
     }
+
+    Chat.prototype.add_html = function() {
+      return this.$chat_div.html("<h3>Chat</h3>            <div class='chat_table'>            </div>            <form id='chat_form' class='chat_form'>            <textarea rows='4' class='new_message'></textarea>            <div>            <button type='submit' class='btn btn-small btn-warning send_message'>Send</button>            </div>            </form>");
+    };
 
     Chat.prototype.init_elements = function() {
       this.$chat_table = this.$chat_div.find('.chat_table');

@@ -5,14 +5,16 @@ class window.TextEditor
     @old_old_text = @default_text
     @max_size = 50000 #duplicate in room_server/config
     @can_send = true
-    window.te = @
-    window.ck = @ckeditor
+    @add_html()
     @init_code_mirror()
     @editor.setValue(@default_text)
     @config_callbacks()
 
+  add_html: ->
+    $('#text_editor_div').html '<textarea rows="6" id="text_editor"></textarea>'
+
   init_code_mirror: ->
-    @editor = CodeMirror.fromTextArea(document.getElementById("texteditor"), {
+    @editor = CodeMirror.fromTextArea(document.getElementById("text_editor"), {
       mode: "text/x-ruby",
       indentUnit: 2
     })
