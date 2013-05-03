@@ -32,7 +32,7 @@ class window.TextEditor
     if @editor
       @editor.setOption('mode', mode)
     else
-      @editor = CodeMirror.fromTextArea document.getElementById("text_editor"), { mode: mode }
+      @editor = CodeMirror.fromTextArea document.getElementById("text_editor"), { mode: mode, historyEventDelay: 3000 }
     @$select.val(mode)
 
   config_callbacks: ->
@@ -72,13 +72,11 @@ class window.TextEditor
 
   set_text: (text) ->
     @editor.setCursor(@editor.getCursor()) #should deselect
-    history = @editor.getHistory()
     @editor.replaceSelection('\u5555\u6666\u7777')
     @old_text = @get_text()
     @merge_texts(text)
     @editor.setValue(@new_text)
     @return_cursor()
-    @editor.setHistory(history)
     @old_old_text = @get_text()
     @can_send = true
 
