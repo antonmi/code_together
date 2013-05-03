@@ -64,7 +64,7 @@ class window.TextEditor
 
   message_received: (message) ->
     if message['new_text'] != undefined
-      message['history'] == 'true' ? @editor.setValue(message['new_text']) : @set_text(message['new_text'])
+      if message['history'] == 'true' then @editor.setValue(message['new_text']) else @set_text(message['new_text'])
     if message['run_update'] && message['user_id'] != @room.user_id
       @send_text(true)
     if message['mode'] && message['user_id'] != @room.user_id

@@ -54,7 +54,7 @@
     };
 
     Room.prototype.message_received = function(message) {
-      var key, val, _ref, _results;
+      var key, val;
 
       _ref = this.message_handelrs();
       _results = [];
