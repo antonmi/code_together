@@ -1,3 +1,6 @@
 require 'pry'
-$: << "#{Dir.pwd}/lesson_server"
+$: << "#{Dir.pwd}/server"
 require 'config'
+
+SERVER_HOST =  'localhost'
+SERVER_PORT = '9595'

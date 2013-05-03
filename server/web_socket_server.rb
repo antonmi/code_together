@@ -21,6 +21,7 @@ module WebSocketServer
     end
 
     def run
+      binding.pry
       EM::WebSocket.run(host: SERVER_HOST, port: SERVER_PORT) do |ws|
         ws.onopen { puts 'Connection opened' }
         ws.onmessage { |message| message_received(message, ws) }

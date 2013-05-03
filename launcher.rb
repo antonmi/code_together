@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-class LessonLauncher
+class Launcher
   # Checks to see if the current process is the child process and if not
   # will update the pid file with the child pid.
   def self.start pid, pidfile, outfile, errfile
@@ -58,7 +58,7 @@ end
 $0 = "lesson server"
 
 # Spawn a deamon
-LessonLauncher.start fork, 'tmp/pids/lesson_server.pid', 'log/lesson_server.stdout.log', 'log/lesson_server.stderr.log'
+Launcher.start fork, 'tmp/pids/server.pid', 'log/server.stdout.log', 'log/server.stderr.log'
 
 # Set up signals for our daemon, for now they just exit the process.
 Signal.trap("HUP") { $stdout.puts "SIGHUP and exit"; exit }
@@ -66,7 +66,7 @@ Signal.trap("INT") { $stdout.puts "SIGINT and exit"; exit }
 Signal.trap("QUIT") { $stdout.puts "SIGQUIT and exit"; exit }
 
 
-$: << File.expand_path('lesson_server')
+$: << File.expand_path('server')
 require 'config'
 $stdout.puts 'Starting WebSocketServer'
 WebSocketServer.start!
