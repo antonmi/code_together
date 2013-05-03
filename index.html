@@ -2,59 +2,38 @@
 <html>
 <head>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <link rel="stylesheet" href="css/codemirror.css">
-    <script src="scripts/js/codemirror.js"></script>
-    <script src="scripts/js/codemirror-compressed.js"></script>
-    <script src="scripts/js/searchcursor.js"></script>
+    <link rel="stylesheet" href="/css/codemirror.css">
+    <script src="/scripts/js/codemirror.js"></script>
+    <script src="/scripts/js/codemirror-compressed.js"></script>
+    <script src="/scripts/js/searchcursor.js"></script>
     <style type="text/css">
         .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
         .cm-s-default span.cm-arrow { color: red; }
     </style>
-    <link rel="stylesheet" href="css/docs.css">
+    <link rel="stylesheet" href="/css/docs.css">
 </head>
 <body>
 
 <div>
     <div id="info_bar_div"></div>
     <div>
-        <div>
-            <div>
-                <div>
-                    <textarea rows="6" id="texteditor">
-                    </textarea>
-                </div>
-            </div>
-            <div id="chat_div">
-                <h3>Chat</h3>
-                <div class='chat_table'>
-                </div>
-                <form id='chat_form' class="chat_form">
-                    <textarea rows="4" class='new_message'></textarea>
-                    <div>
-                        <button type='submit' class='btn btn-small btn-warning send_message'>Send</button>
-                    </div>
-                </form>
-            </div>
+        <div id="navigation_div">
+            <label for="room_id">Room Id</label>
+            <input name="room_id" id="room_id"/>
+            <label for="user_id">User Id</label>
+            <input name="user_id" id="user_id"/>
+            <button id="go_button">Go</button>
         </div>
-    </div>
-
-    <div class="hidden">
-        <div style="display: none;">
-            <span id="room_id">room_1</span>
-            <span id="user_id">user_1</span>
-        </div>
+        <div id="text_editor_div"></div>
+        <div id="chat_div"></div>
     </div>
 </div>
-<script type="text/javascript" src='scripts/js/room.js'></script>
-<script type="text/javascript" src='scripts/js/web_socket_client.js'></script>
-<script type="text/javascript" src='scripts/js/chat.js'></script>
-<script type="text/javascript" src='scripts/js/info_bar.js'></script>
-<script type="text/javascript" src='scripts/js/diff_match_patch.js'></script>
-<script type="text/javascript" src='scripts/js/text_editor.js'></script>
-<script type="text/javascript">
-    $(function(){
-        new Room('ws:185.4.65.79:9090', $('#room_id').html(), Math.random())
-    })
-</script>
+<script type="text/javascript" src='/scripts/js/room.js'></script>
+<script type="text/javascript" src='/scripts/js/web_socket_client.js'></script>
+<script type="text/javascript" src='/scripts/js/chat.js'></script>
+<script type="text/javascript" src='/scripts/js/info_bar.js'></script>
+<script type="text/javascript" src='/scripts/js/diff_match_patch.js'></script>
+<script type="text/javascript" src='/scripts/js/text_editor.js'></script>
+<script type="text/javascript" src='/scripts/js/navigation.js'></script>
 </body>
 </html>
