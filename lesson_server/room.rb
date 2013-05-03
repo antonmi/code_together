@@ -45,15 +45,15 @@ class Room
       @rooms ||= {}
     end
 
-    def find_or_create_room(credentials, ws, info)
+    def find_or_create_room(credentials, ws)
       room_id = credentials['room_id']
       if room = rooms[room_id]
         user_id = credentials['user_id']
-        room.add_user(user_id, ws, info)
+        room.add_user(user_id, ws, credentials)
       else
         room = Room.new(room_id, {})
         user_id = credentials['user_id']
-        room.add_user(user_id, ws, info)
+        room.add_user(user_id, ws, credentials)
       end
     end
 
@@ -68,7 +68,4 @@ class Room
     end
   end
 
-  EM::PeriodicTimer.new(10) do
-    puts statistic
-  end
 end

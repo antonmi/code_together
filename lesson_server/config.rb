@@ -1,6 +1,8 @@
 require 'json'
 require 'pry'
 require 'em-websocket'
+require 'room'
+require 'user'
 require 'web_socket_server'
 
 DEFAULT_EDITOR_TEXT = 'test'

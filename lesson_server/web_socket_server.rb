@@ -6,33 +6,32 @@ module WebSocketServer
       message = JSON.parse(message)
       if message.has_key?('credentials')
         credentials = message['credentials']
-        Room.find_or_create_room(credentials, ws, credentials)
+        Room.find_or_create_room(credentials, ws)
       end
     rescue
-      puts 'Error in Server message_received'
-      puts message
-      nil #just do nothing
+      puts "Error in Server message_received: #{message}"
     end
-
 
     def start!
       EM.epoll
       EM.run do
-        require 'room'
-        require 'user'
-
         puts 'Starting WebSocket Server'
-        EventMachine::WebSocket.start(host: SERVER_HOST, port: SERVER_PORT) do |ws|
-          ws.onopen do
-            puts 'Connection opened'
-          end
-
-          ws.onmessage do |message|
-            message_received(message, ws)
-          end
-        end
+        run
       end
     end
+
+    def run
+      EM::WebSocket.run(host: SERVER_HOST, port: SERVER_PORT) do |ws|
+        ws.onopen { puts 'Connection opened' }
+        ws.onmessage { |message| message_received(message, ws) }
+      end
+      statistic
+    end
+
+    def statistic
+      EM::PeriodicTimer.new(10) { puts Room.statistic }
+    end
+
   end
 
 end

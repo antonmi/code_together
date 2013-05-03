@@ -81,7 +81,6 @@
       }
       this.new_text = this.get_text();
       if ((force || one_more_time || this.new_text !== this.old_old_text) && this.can_send) {
-        console.log('SENDING');
         if (this.one_more_time_update_timeout) {
           window.clearTimeout(this.one_more_time_update_timeout);
         }

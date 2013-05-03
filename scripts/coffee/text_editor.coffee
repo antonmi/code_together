@@ -47,7 +47,6 @@ class window.TextEditor
   send_text: (force = false, one_more_time = false) ->
     @new_text = @get_text()
     if (force || one_more_time || @new_text != @old_old_text) && @can_send
-      console.log 'SENDING'
       window.clearTimeout(@one_more_time_update_timeout) if @one_more_time_update_timeout
       message = { 'get_text': @new_text }
       message['force'] = 'true' if force
