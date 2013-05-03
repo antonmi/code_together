@@ -10,21 +10,45 @@
       this.max_size = 50000;
       this.can_send = true;
       this.add_html();
+      this.init_select_mode();
       this.init_code_mirror();
       this.editor.setValue(this.default_text);
       this.config_callbacks();
     }
 
     TextEditor.prototype.add_html = function() {
-      return $('#text_editor_div').html('<textarea rows="6" id="text_editor"></textarea>');
+      var key, options, value, _ref;
+
+      options = [];
+      _ref = CodeMirror.modes;
+      for (key in _ref) {
+        value = _ref[key];
+        options.push("<option value='" + key + "'>" + key + "</option>");
+      }
+      return $('#text_editor_div').html("<select id='text_editor_mode'>" + (options.join('')) + "</select>      <textarea rows='6' id='text_editor'></textarea>");
     };
 
-    TextEditor.prototype.init_code_mirror = function() {
-      this.editor = CodeMirror.fromTextArea(document.getElementById("text_editor"), {
-        mode: "text/x-ruby",
-        indentUnit: 2
+    TextEditor.prototype.init_select_mode = function() {
+      var _this = this;
+
+      this.$select = $('#text_editor_mode');
+      return this.$select.on('change', function() {
+        console.log(_this.$select.val());
+        return _this.init_code_mirror(_this.$select.val());
       });
-      return window.editor = this.editor;
+    };
+
+    TextEditor.prototype.init_code_mirror = function(mode) {
+      if (mode == null) {
+        mode = 'text';
+      }
+      if (this.editor) {
+        return this.editor.setOption('mode', mode);
+      } else {
+        return this.editor = CodeMirror.fromTextArea(document.getElementById("text_editor"), {
+          mode: mode
+        });
+      }
     };
 
     TextEditor.prototype.config_callbacks = function() {

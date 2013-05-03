@@ -6,19 +6,31 @@ class window.TextEditor
     @max_size = 50000 #duplicate in room_server/config
     @can_send = true
     @add_html()
+    @init_select_mode()
     @init_code_mirror()
     @editor.setValue(@default_text)
     @config_callbacks()
 
   add_html: ->
-    $('#text_editor_div').html '<textarea rows="6" id="text_editor"></textarea>'
+    options = []
+    for key, value of CodeMirror.modes
+      options.push "<option value='#{key}'>#{key}</option>"
+    $('#text_editor_div').html(
+      "<select id='text_editor_mode'>#{options.join('')}</select>
+      <textarea rows='6' id='text_editor'></textarea>"
+    )
 
-  init_code_mirror: ->
-    @editor = CodeMirror.fromTextArea(document.getElementById("text_editor"), {
-      mode: "text/x-ruby",
-      indentUnit: 2
-    })
-    window.editor = @editor
+  init_select_mode: ->
+    @$select = $('#text_editor_mode')
+    @$select.on 'change', =>
+      console.log @$select.val()
+      @init_code_mirror(@$select.val())
+
+  init_code_mirror: (mode = 'text') ->
+    if @editor
+      @editor.setOption('mode', mode)
+    else
+      @editor = CodeMirror.fromTextArea document.getElementById("text_editor"), { mode: mode }
 
   config_callbacks: ->
     @get_new_text_callback = =>
