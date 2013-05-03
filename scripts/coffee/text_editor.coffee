@@ -15,6 +15,7 @@ class window.TextEditor
     options = []
     for key, value of CodeMirror.modes
       options.push "<option value='#{key}'>#{key}</option>"
+    options[0] = "<option value='null'>text</option>"
     $('#text_editor_div').html(
       "<select id='text_editor_mode'>#{options.join('')}</select>
       <textarea rows='6' id='text_editor'></textarea>"
@@ -71,7 +72,7 @@ class window.TextEditor
 
   set_text: (text) ->
     @editor.setCursor(@editor.getCursor()) #should deselect
-    @editor.replaceSelection('`|~')
+    @editor.replaceSelection('\u5555\u6666\u7777')
     @old_text = @get_text()
     @merge_texts(text)
     @editor.setValue(@new_text)
@@ -85,7 +86,7 @@ class window.TextEditor
     @new_text = @dmp.patch_apply(patch_list, @old_text)[0]
 
   return_cursor: ->
-    c = @editor.getSearchCursor('`|~')
+    c = @editor.getSearchCursor('\u5555\u6666\u7777')
     if c.findNext()
       from = c.from()
       to = c.to()

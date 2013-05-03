@@ -25,6 +25,7 @@
         value = _ref[key];
         options.push("<option value='" + key + "'>" + key + "</option>");
       }
+      options[0] = "<option value='null'>text</option>";
       return $('#text_editor_div').html("<select id='text_editor_mode'>" + (options.join('')) + "</select>      <textarea rows='6' id='text_editor'></textarea>");
     };
 
@@ -120,7 +121,7 @@
 
     TextEditor.prototype.set_text = function(text) {
       this.editor.setCursor(this.editor.getCursor());
-      this.editor.replaceSelection('`|~');
+      this.editor.replaceSelection('\u5555\u6666\u7777');
       this.old_text = this.get_text();
       this.merge_texts(text);
       this.editor.setValue(this.new_text);
@@ -140,7 +141,7 @@
     TextEditor.prototype.return_cursor = function() {
       var c, from, to;
 
-      c = this.editor.getSearchCursor('`|~');
+      c = this.editor.getSearchCursor('\u5555\u6666\u7777');
       if (c.findNext()) {
         from = c.from();
         to = c.to();
