@@ -1,6 +1,6 @@
 $ ->
   ids = window.location.hash.split('#')
-  if ids.length = 3
+  if ids.length == 3
     user_id = ids.pop().replace('user_id=', '')
     room_id = ids.pop().replace('room_id=', '')
     $('#room_id').val(room_id)
