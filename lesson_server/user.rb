@@ -46,6 +46,11 @@ class User
               @room.channel.push(JSON.dump(message))
             end
           end
+          if message['text_editor']['mode']
+            message['text_editor'].merge!('user_id' => @id)
+            @room.editor_mode = message['text_editor']['mode']
+            @room.channel.push(JSON.dump(message))
+          end
         end
       rescue Exception => e
         puts "Exception! #{e}"
@@ -97,6 +102,7 @@ class User
     message = { 'text_editor' => {} }
     message['text_editor'].merge!('history' => 'true')
     message['text_editor'].merge!('new_text' => @room.editor_text)
+    message['text_editor'].merge!('mode' => @room.editor_mode)
     message
   end
 

@@ -2,16 +2,11 @@
 (function() {
   window.Room = (function() {
     function Room(uri, room_id, user_id) {
-      var initialize_chats,
-        _this = this;
-
       this.uri = uri;
       this.room_id = room_id;
       this.user_id = user_id;
-      window.room = this;
       this.info_bar = new InfoBar($('#info_bar_div'), this);
       this.report('Initializing');
-      this.in_progress = false;
       this.credentials = {
         room_id: this.room_id,
         user_id: this.user_id
@@ -19,20 +14,9 @@
       this.chat = new Chat($('#chat_div'), this);
       this.text_editor = new TextEditor($('#texteditor'), this);
       console.log('initializing chats');
-      initialize_chats = function() {
-        return _this.start();
-      };
-      this.ws_client = new WebSocketClient(this.uri, this, initialize_chats);
+      this.ws_client = new WebSocketClient(this.uri, this);
       this.report('Initialized Successfully');
     }
-
-    Room.prototype.start = function() {
-      return this.in_progress = true;
-    };
-
-    Room.prototype.stop = function() {
-      return this.in_progress = false;
-    };
 
     Room.prototype.message_handelrs = function() {
       return {
@@ -56,14 +40,8 @@
 
       this.report('Connection Lost');
       this.report('Reconnecting');
-      this.stop();
       reconnect = function() {
-        var post_connected_actions;
-
-        post_connected_actions = function() {
-          return _this.start();
-        };
-        return _this.ws_client.connect(post_connected_actions);
+        return _this.ws_client.connect();
       };
       window.clearTimeout(window.reconnect_timeout);
       return window.reconnect_timeout = setTimeout(reconnect, 3000);

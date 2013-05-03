@@ -25,7 +25,7 @@
         value = _ref[key];
         options.push("<option value='" + key + "'>" + key + "</option>");
       }
-      options[0] = "<option value='null'>text</option>";
+      options[0] = "<option value='text'>text</option>";
       return $('#text_editor_div').html("<select id='text_editor_mode'>" + (options.join('')) + "</select>      <textarea rows='6' id='text_editor'></textarea>");
     };
 
@@ -34,8 +34,13 @@
 
       this.$select = $('#text_editor_mode');
       return this.$select.on('change', function() {
-        console.log(_this.$select.val());
-        return _this.init_code_mirror(_this.$select.val());
+        var mode;
+
+        mode = _this.$select.val();
+        _this.init_code_mirror(mode);
+        return _this.send_message({
+          'mode': mode
+        });
       });
     };
 
@@ -44,12 +49,13 @@
         mode = 'text';
       }
       if (this.editor) {
-        return this.editor.setOption('mode', mode);
+        this.editor.setOption('mode', mode);
       } else {
-        return this.editor = CodeMirror.fromTextArea(document.getElementById("text_editor"), {
+        this.editor = CodeMirror.fromTextArea(document.getElementById("text_editor"), {
           mode: mode
         });
       }
+      return this.$select.val(mode);
     };
 
     TextEditor.prototype.config_callbacks = function() {
@@ -105,6 +111,7 @@
     };
 
     TextEditor.prototype.message_received = function(message) {
+      console.log(message);
       if (message['new_text'] !== void 0) {
         if (message['history'] === 'true') {
           this.editor.setValue(message['new_text']);
@@ -112,10 +119,11 @@
           this.set_text(message['new_text']);
         }
       }
-      if (message['run_update']) {
-        if (message['user_id'] !== this.room.user_id) {
-          return this.send_text(true);
-        }
+      if (message['run_update'] && message['user_id'] !== this.room.user_id) {
+        this.send_text(true);
+      }
+      if (message['mode'] && message['user_id'] !== this.room.user_id) {
+        return this.init_code_mirror(message['mode']);
       }
     };
 

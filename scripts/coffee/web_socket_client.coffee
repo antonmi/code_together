@@ -7,7 +7,7 @@ class window.WebSocketClient extends WebSocket
     @ws = new WebSocket(@uri);
 
     @ws.onopen = =>
-      @post_connected_actions()
+      @post_connected_actions?()
       @room.connection_established()
 
     @ws.onerror = =>

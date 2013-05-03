@@ -15,7 +15,7 @@ class window.TextEditor
     options = []
     for key, value of CodeMirror.modes
       options.push "<option value='#{key}'>#{key}</option>"
-    options[0] = "<option value='null'>text</option>"
+    options[0] = "<option value='text'>text</option>"
     $('#text_editor_div').html(
       "<select id='text_editor_mode'>#{options.join('')}</select>
       <textarea rows='6' id='text_editor'></textarea>"
@@ -24,14 +24,16 @@ class window.TextEditor
   init_select_mode: ->
     @$select = $('#text_editor_mode')
     @$select.on 'change', =>
-      console.log @$select.val()
-      @init_code_mirror(@$select.val())
+      mode = @$select.val()
+      @init_code_mirror(mode)
+      @send_message('mode': mode)
 
   init_code_mirror: (mode = 'text') ->
     if @editor
       @editor.setOption('mode', mode)
     else
       @editor = CodeMirror.fromTextArea document.getElementById("text_editor"), { mode: mode }
+    @$select.val(mode)
 
   config_callbacks: ->
     @get_new_text_callback = =>
@@ -62,13 +64,11 @@ class window.TextEditor
 
   message_received: (message) ->
     if message['new_text'] != undefined
-      if message['history'] == 'true'
-        @editor.setValue(message['new_text'])
-      else
-        @set_text(message['new_text'])
-    if message['run_update']
-      if message['user_id'] != @room.user_id
-        @send_text(true)
+      message['history'] == 'true' ? @editor.setValue(message['new_text']) : @set_text(message['new_text'])
+    if message['run_update'] && message['user_id'] != @room.user_id
+      @send_text(true)
+    if message['mode'] && message['user_id'] != @room.user_id
+      @init_code_mirror(message['mode'])
 
   set_text: (text) ->
     @editor.setCursor(@editor.getCursor()) #should deselect

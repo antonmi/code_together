@@ -1,12 +1,13 @@
 class Room
 
   attr_reader :channel
-  attr_accessor :users, :id, :editor_text, :chat_messages
+  attr_accessor :users, :id, :editor_text, :editor_mode, :chat_messages
 
   def initialize(room_id)
     @id = room_id
     @users = {}
     @editor_text = DEFAULT_EDITOR_TEXT
+    @editor_mode = 'text'
     @chat_messages = []
     @channel = EM::Channel.new
     self.class.rooms.merge!(@id => self)

@@ -20,7 +20,9 @@
       console.log("Connecting to " + this.uri);
       this.ws = new WebSocket(this.uri);
       this.ws.onopen = function() {
-        _this.post_connected_actions();
+        if (typeof _this.post_connected_actions === "function") {
+          _this.post_connected_actions();
+        }
         return _this.room.connection_established();
       };
       this.ws.onerror = function() {
