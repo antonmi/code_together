@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'room'
 
 describe WebSocketServer do
 

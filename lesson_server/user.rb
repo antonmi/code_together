@@ -52,15 +52,8 @@ class User
       end
     end
 
-    @ws.onerror do
-      puts 'Error'
-      @room.stop!
-    end
-
-    @ws.onclose do
-      puts "Closed by #{id}"
-      @room.stop!
-    end
+    @ws.onerror { puts 'Error' }
+    @ws.onclose { puts "Closed by #{id}" }
   end
 
 
@@ -106,9 +99,5 @@ class User
     message['text_editor'].merge!('new_text' => @room.editor_text)
     message
   end
-
-
-
-
 
 end
