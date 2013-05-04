@@ -4,10 +4,11 @@
     function InfoBar($info_bar, room) {
       this.$info_bar = $info_bar;
       this.room = room;
+      this.max_lines = 5;
     }
 
     InfoBar.prototype.report = function(message) {
-      if (this.$info_bar.find('div').length > 4) {
+      if (this.$info_bar.find('div').length >= this.max_lines) {
         this.$info_bar.find('div').first().remove();
       }
       return this.$info_bar.append("<div>" + (this.current_time()) + " : " + message + "</div>");
@@ -17,7 +18,25 @@
       var d;
 
       d = new Date();
-      return "" + (d.getHours()) + ":" + (d.getMinutes()) + ":" + (d.getSeconds());
+      return this.build_time_string(d);
+    };
+
+    InfoBar.prototype.build_time_string = function(d) {
+      var hours, mins, secs;
+
+      hours = d.getHours();
+      if (hours < 10) {
+        hours = "0" + hours;
+      }
+      mins = d.getMinutes();
+      if (mins < 10) {
+        mins = "0" + mins;
+      }
+      secs = d.getSeconds();
+      if (secs < 10) {
+        secs = "0" + secs;
+      }
+      return "" + hours + ":" + mins + ":" + secs;
     };
 
     return InfoBar;

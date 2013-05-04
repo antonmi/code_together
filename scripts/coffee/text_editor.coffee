@@ -1,5 +1,5 @@
 class window.TextEditor
-  constructor: (@ckeditor, @room) ->
+  constructor: (@$textarea, @room) ->
     @dmp = new diff_match_patch
     @default_text = "Welcome!" #duplicate in room_server/config
     @old_old_text = @default_text
