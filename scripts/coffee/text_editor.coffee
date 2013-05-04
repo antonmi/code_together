@@ -1,7 +1,7 @@
 class window.TextEditor
   constructor: (@ckeditor, @room) ->
     @dmp = new diff_match_patch
-    @default_text = "test" #duplicate in room_server/config
+    @default_text = "Welcome!" #duplicate in room_server/config
     @old_old_text = @default_text
     @max_size = 50000 #duplicate in room_server/config
     @can_send = true

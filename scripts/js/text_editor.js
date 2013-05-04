@@ -5,7 +5,7 @@
       this.ckeditor = ckeditor;
       this.room = room;
       this.dmp = new diff_match_patch;
-      this.default_text = "test";
+      this.default_text = "Welcome!";
       this.old_old_text = this.default_text;
       this.max_size = 50000;
       this.can_send = true;
@@ -17,7 +17,7 @@
     }
 
     TextEditor.prototype.add_html = function() {
-      var key, options, value;
+      var key, options, value, _ref;
 
       options = [];
       _ref = CodeMirror.modes;
