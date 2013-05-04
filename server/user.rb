@@ -15,10 +15,6 @@ class User
     get_history
   end
 
-  def to_hash
-    {joined_at: @joined_at, name: @name} #and other information
-  end
-
   def init_ws_actions
     @ws.onmessage do |message|
       begin
@@ -61,6 +57,7 @@ class User
     @ws.onclose { puts "Closed by #{id}" }
   end
 
+  private
 
   require 'sanitize'
 

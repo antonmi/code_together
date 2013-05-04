@@ -18,16 +18,6 @@ describe WebSocketServer do
       end
     end
 
-    it 'should define onmessage callback' do
-      EM.run do
-        EventMachine::WebSocket::Connection.any_instance.should_receive(:onopen)
-        EventMachine::WebSocket::Connection.any_instance.should_receive(:onmessage)
-        WebSocketServer.run
-        EM::Timer.new(3) { EM.stop }
-      end
-    end
-
-
   end
 
   context 'message_received' do
