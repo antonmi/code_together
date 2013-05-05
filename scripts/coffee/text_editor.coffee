@@ -1,5 +1,5 @@
 class window.TextEditor
-  constructor: (@$textarea, @room) ->
+  constructor: (@$text_editor_div, @room) ->
     @dmp = new diff_match_patch
     @default_text = "Welcome!" #duplicate in room_server/config
     @old_old_text = @default_text
@@ -16,7 +16,7 @@ class window.TextEditor
     for key, value of CodeMirror.modes
       options.push "<option value='#{key}'>#{key}</option>"
     options[0] = "<option value='text'>text</option>"
-    $('#text_editor_div').html(
+    @$text_editor_div.html(
       "<select id='text_editor_mode'>#{options.join('')}</select>
       <textarea rows='6' id='text_editor'></textarea>"
     )

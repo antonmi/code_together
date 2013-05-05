@@ -34,7 +34,7 @@ describe('Chat', function() {
             spyOn(room, 'send_chat_message');
             chat.$input.val('test_message');
             chat.$form.submit();
-            expect(room.send_chat_message).toHaveBeenCalled();
+            expect(room.send_chat_message).toHaveBeenCalledWith('test_message');
         });
 
         it('should show new message', function(){
