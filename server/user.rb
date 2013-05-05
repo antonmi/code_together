@@ -91,12 +91,12 @@ class User
   end
 
   def report_connected
-    message = { 'info_bar' => "User #{id} connected"}
+    message = { 'info_bar' => "'#{id} connected"}
     @room.channel.push(JSON.dump(message))
   end
 
   def report_disconnected
-    message = { 'info_bar' => "User #{id} disconnected"}
+    message = { 'info_bar' => "#{id} disconnected"}
     @room.channel.push(JSON.dump(message))
   end
 
