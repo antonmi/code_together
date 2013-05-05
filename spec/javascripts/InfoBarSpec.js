@@ -16,6 +16,15 @@ describe('InfoBar', function() {
         expect(info_bar.$info_bar).toContainText('test message');
     });
 
+    it('should show limited amount of messages', function(){
+        info_bar.max_lines = 2;
+        info_bar.report('message_1');
+        info_bar.report('message_2');
+        info_bar.report('message_3');
+        expect(info_bar.$info_bar).toContainText('message_2');
+        expect(info_bar.$info_bar).not.toContainText('message_1');
+    });
+
     it('should build time string', function(){
         date = new Date('10.10.10 23:44:55');
         expect(info_bar.build_time_string(date)).toEqual('23:44:55');

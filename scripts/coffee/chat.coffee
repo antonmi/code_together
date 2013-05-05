@@ -1,4 +1,12 @@
 class window.Chat
+
+  @chat_html: ->
+    html = "<h3>Chat</h3><div class='chat_table'></div>"
+    html += "<form id='chat_form' class='chat_form'>"
+    html += "<textarea rows='4' class='new_message'></textarea>"
+    html += "<div><button type='submit' class='btn btn-small btn-warning send_message'>Send</button></div></form>"
+    html
+
   constructor: (@$chat_div, @room) ->
     @add_html()
     @init_elements()
@@ -6,21 +14,11 @@ class window.Chat
     @init_actions()
 
   add_html: ->
-    @$chat_div.html(
-      "<h3>Chat</h3>
-            <div class='chat_table'>
-            </div>
-            <form id='chat_form' class='chat_form'>
-            <textarea rows='4' class='new_message'></textarea>
-            <div>
-            <button type='submit' class='btn btn-small btn-warning send_message'>Send</button>
-            </div>
-            </form>")
+    @$chat_div.html(Chat.chat_html());
 
   init_elements: ->
     @$chat_table = @$chat_div.find('.chat_table')
     @$form = @$chat_div.find('#chat_form')
-    @$submit_button = @$form.find('input[type="submit"]')
     @$input = @$chat_div.find('.new_message')
 
   init_history: ->
