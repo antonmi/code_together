@@ -84,7 +84,5 @@ describe('Chat', function() {
             chat.show_history(e);
             expect(chat.$input.val()).toEqual('hello3');
         })
-
-
     });
 });
