@@ -14,6 +14,10 @@
       return this.$info_bar.append("<div>" + (this.current_time()) + " : " + message + "</div>");
     };
 
+    InfoBar.prototype.message_received = function(message) {
+      return this.report(message);
+    };
+
     InfoBar.prototype.current_time = function() {
       var d;
 

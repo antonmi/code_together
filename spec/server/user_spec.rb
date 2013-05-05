@@ -17,6 +17,7 @@ describe User do
     it 'should create new user' do
       User.any_instance.should_receive(:init_ws_actions)
       User.any_instance.should_receive(:subscribe_to_channel)
+      User.any_instance.should_receive(:report_connected)
       User.any_instance.should_receive(:get_history)
       user = User.new(@ws, @room, creds)
       expect(user.id).to eq('test_user')
@@ -28,6 +29,7 @@ describe User do
     context 'init_ws_actions' do
       before do
         User.any_instance.stub(:subscribe_to_channel)
+        User.any_instance.should_receive(:report_connected)
         User.any_instance.stub(:get_history)
         @ws.stub(:onerror)
         @ws.stub(:onclose)
@@ -118,6 +120,7 @@ describe User do
     context 'subscribe to channel' do
       before do
         User.any_instance.stub(:init_ws_actions)
+        User.any_instance.stub(:report_connected)
         User.any_instance.stub(:get_history)
       end
       it 'should subscribe user to room channel' do
@@ -130,6 +133,7 @@ describe User do
       before do
         User.any_instance.stub(:init_ws_actions)
         User.any_instance.stub(:subscribe_to_channel)
+        User.any_instance.stub(:report_connected)
         User.any_instance.stub(:text_editor_history_message).and_return('text_editor history')
       end
 
@@ -146,6 +150,7 @@ describe User do
       User.any_instance.stub(:subscribe_to_channel)
       User.any_instance.stub(:get_history)
       User.any_instance.stub(:init_ws_actions)
+      User.any_instance.stub(:report_connected)
       @user = User.new(@ws, @room, creds)
       @room.editor_text = 'hello world 1'
       @user.editor_text = 'hello world'

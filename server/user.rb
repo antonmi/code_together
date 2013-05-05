@@ -11,7 +11,8 @@ class User
     @dpm = DiffPatchMatch.new
     @editor_text = DEFAULT_EDITOR_TEXT
     init_ws_actions
-    subscribe_to_channel(room.channel)
+    subscribe_to_channel
+    report_connected
     get_history
   end
 
@@ -53,8 +54,8 @@ class User
       end
     end
 
-    @ws.onerror { puts 'Error' }
-    @ws.onclose { puts "Closed by #{id}" }
+    @ws.onerror { puts "Error in #{id}"; report_disconnected  }
+    @ws.onclose { puts "Closed by #{id}"; report_disconnected }
   end
 
   private
@@ -83,11 +84,22 @@ class User
     end
   end
 
-  def subscribe_to_channel(channel)
-    channel.subscribe do |message|
+  def subscribe_to_channel
+    @room.channel.subscribe do |message|
       @ws.send(message)
     end
   end
+
+  def report_connected
+    message = { 'info_bar' => "User #{id} connected"}
+    @room.channel.push(JSON.dump(message))
+  end
+
+  def report_disconnected
+    message = { 'info_bar' => "User #{id} disconnected"}
+    @room.channel.push(JSON.dump(message))
+  end
+
 
   def get_history
     @ws.send(JSON.dump(text_editor_history_message))

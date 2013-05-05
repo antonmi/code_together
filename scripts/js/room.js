@@ -21,7 +21,8 @@
     Room.prototype.message_handelrs = function() {
       return {
         'chat': this.chat,
-        'text_editor': this.text_editor
+        'text_editor': this.text_editor,
+        'info_bar': this.info_bar
       };
     };
 

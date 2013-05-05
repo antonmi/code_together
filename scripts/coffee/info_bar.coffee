@@ -7,6 +7,10 @@ class window.InfoBar
       @$info_bar.find('div').first().remove()
     @$info_bar.append("<div>#{@current_time()} : #{message}</div>")
 
+  message_received: (message) ->
+    @report(message)
+
+
   current_time: ->
     d = new Date()
     @build_time_string(d)

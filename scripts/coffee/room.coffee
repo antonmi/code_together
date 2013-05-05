@@ -11,7 +11,7 @@ class window.Room
 
 
   message_handelrs: ->
-    { 'chat' : @chat, 'text_editor' : @text_editor }
+    { 'chat': @chat, 'text_editor': @text_editor, 'info_bar': @info_bar }
 
   report: (message) ->
     @info_bar.report(message)
