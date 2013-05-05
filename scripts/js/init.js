@@ -14,8 +14,8 @@
       }
     }
     return $('#go_form').on('submit', function() {
-      user_id = $('#room_id').val();
-      room_id = $('#user_id').val();
+      room_id = $('#room_id').val();
+      user_id = $('#user_id').val();
       if (room_id && user_id) {
         window.location.href = window.location.origin + window.location.pathname + ("#room_id=" + room_id + "#user_id=" + user_id);
         window.location.reload();
