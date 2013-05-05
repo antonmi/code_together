@@ -20,7 +20,6 @@ class window.WebSocketClient extends WebSocket
       message = JSON.parse(message.data)
       @room.message_received(message)
 
-
   send_message: (message) ->
     str = JSON.stringify(message)
     @ws.send(str)

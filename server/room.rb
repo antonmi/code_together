@@ -26,14 +26,9 @@ class Room
 
     def find_or_create_room(credentials, ws)
       room_id = credentials['room_id']
-      if room = rooms[room_id]
-        user_id = credentials['user_id']
-        room.add_user(user_id, ws, credentials)
-      else
-        room = Room.new(room_id)
-        user_id = credentials['user_id']
-        room.add_user(user_id, ws, credentials)
-      end
+      room = rooms[room_id] || Room.new(room_id)
+      user_id = credentials['user_id']
+      room.add_user(user_id, ws, credentials)
     end
 
     def statistic

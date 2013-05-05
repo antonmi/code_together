@@ -1,4 +1,5 @@
 window.init_room = (room_id, user_id) ->
+  window.room.disconnect() if window.room
   if room_id && user_id
     window.location.href = window.location.origin + window.location.pathname + "#room_id=#{room_id}#user_id=#{user_id}"
     window.room = new Room('ws:185.4.65.79:9090', room_id, user_id)

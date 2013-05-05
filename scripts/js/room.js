@@ -48,6 +48,10 @@
       return window.reconnect_timeout = setTimeout(reconnect, 3000);
     };
 
+    Room.prototype.disconnect = function() {
+      return this.ws_client.ws.close();
+    };
+
     Room.prototype.send_credentials = function() {
       return this.ws_client.send_message({
         credentials: this.credentials
