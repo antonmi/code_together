@@ -28,9 +28,6 @@ class window.Room
     window.clearTimeout(window.reconnect_timeout)
     window.reconnect_timeout = setTimeout(reconnect, 3000)
 
-  disconnect: ->
-    @ws_client.ws.close()
-
   send_credentials: ->
     @ws_client.send_message(credentials : @credentials)
 
