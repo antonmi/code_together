@@ -6,7 +6,7 @@
 
       html = "<h3>Chat</h3><div class='chat_table'></div>";
       html += "<form id='chat_form' class='chat_form'>";
-      html += "<textarea rows='4' class='new_message'></textarea>";
+      html += "<textarea rows='1' class='new_message'></textarea>";
       html += "<div><button type='submit' class='btn btn-small btn-warning send_message'>Send</button></div></form>";
       return html;
     };
@@ -76,7 +76,7 @@
     Chat.prototype.append_to_chat = function(user, text) {
       var $div;
 
-      $div = $("<div class='message'><p class='user'></p><p class='text'></p></div>");
+      $div = $("<div class='message'><span class='user'></span><span class='text'></span></div>");
       $div.find('.user').html("" + user + ":");
       $div.find('.text').html(text);
       return this.$chat_table.append($div);

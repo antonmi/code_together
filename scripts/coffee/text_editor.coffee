@@ -17,7 +17,7 @@ class window.TextEditor
       options.push "<option value='#{key}'>#{key}</option>"
     options[0] = "<option value='text'>text</option>"
     @$text_editor_div.html(
-      "<select id='text_editor_mode'>#{options.join('')}</select>
+      "<span>Select your language</span><select id='text_editor_mode'>#{options.join('')}</select>
       <textarea rows='6' id='text_editor'></textarea>"
     )
 

@@ -3,7 +3,7 @@ class window.Chat
   @chat_html: ->
     html = "<h3>Chat</h3><div class='chat_table'></div>"
     html += "<form id='chat_form' class='chat_form'>"
-    html += "<textarea rows='4' class='new_message'></textarea>"
+    html += "<textarea rows='1' class='new_message'></textarea>"
     html += "<div><button type='submit' class='btn btn-small btn-warning send_message'>Send</button></div></form>"
     html
 
@@ -51,7 +51,7 @@ class window.Chat
     @$chat_table.scrollTop(@$chat_table[0].scrollHeight)
 
   append_to_chat: (user, text) ->
-    $div = $("<div class='message'><p class='user'></p><p class='text'></p></div>")
+    $div = $("<div class='message'><span class='user'></span><span class='text'></span></div>")
     $div.find('.user').html("#{user}:")
     $div.find('.text').html(text)
     @$chat_table.append($div)

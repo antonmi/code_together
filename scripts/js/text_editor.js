@@ -26,7 +26,7 @@
         options.push("<option value='" + key + "'>" + key + "</option>");
       }
       options[0] = "<option value='text'>text</option>";
-      return this.$text_editor_div.html("<select id='text_editor_mode'>" + (options.join('')) + "</select>      <textarea rows='6' id='text_editor'></textarea>");
+      return this.$text_editor_div.html("<span>Select your language</span><select id='text_editor_mode'>" + (options.join('')) + "</select>      <textarea rows='6' id='text_editor'></textarea>");
     };
 
     TextEditor.prototype.init_select_mode = function() {

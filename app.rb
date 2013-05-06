@@ -25,3 +25,8 @@ get '/css/:name' do
   content_type "text/css"
   File.read("css/#{params[:name]}")
 end
+
+get '/img/:name' do
+  content_type "image/png"
+  File.read("img/#{params[:name]}")
+end
