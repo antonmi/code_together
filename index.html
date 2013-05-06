@@ -7,30 +7,47 @@
     <script src="scripts/js/codemirror-compressed.js"></script>
     <script src="scripts/js/searchcursor.js"></script>
     <style type="text/css">
-        .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
         .cm-s-default span.cm-arrow { color: red; }
     </style>
+    <link href='http://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<div>
-    <div id="info_bar_div"></div>
-    <div>
-        <div id="navigation_div">
-            <form id="go_form">
-                <label for="room_id">Room Id</label>
-                <input name="room_id" id="room_id"/>
-                <label for="user_id">User Id</label>
-                <input name="user_id" id="user_id"/>
-                <input type="submit" id="go_button" name="Go!">
+<div id="wrapper">
+    <header class="container">
+        <div class="row">
+            <h1>&lt;/Code&gt; together</h1>
+            <form id="go_form" class='form-inline'>
+                <legend>Choose room and nickname</legend>
+                <label class="control-label" for="room_id">Room Id</label>
+                <input type="text" name="room_id" id="room_id" class="input-small"/>
+                <label class="control-label" for="user_id">Nickname</label>
+                <input type="text" name="user_id" id="user_id" class="input-small"/>
+                <button type="submit" class="btn" id="go_button">Go!</button>
             </form>
         </div>
-        <div id="text_editor_div"></div>
-        <div id="chat_div"></div>
+    </header>
+    <div id="main" class="container">
+        <div id="content">
+            <h2>Code here</h2>
+            <div id="text_editor_div"></div>
+        </div>
+        <div id="sidebar">
+            <div id='console'>
+                <h3>Console</h3>
+                <div id="info_bar_div"></div>
+            </div>
+            <div id="chat_div"></div>
+        </div>
     </div>
+    <div id='push'></div>
 </div>
+<footer>
+    <div class="container">
+        copyright
+    </div>
+</footer>
 <script type="text/javascript" src='scripts/js/room.js'></script>
 <script type="text/javascript" src='scripts/js/web_socket_client.js'></script>
 <script type="text/javascript" src='scripts/js/chat.js'></script>
