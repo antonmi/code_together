@@ -20,11 +20,11 @@
       $('#room_id').val(room_id);
       $('#user_id').val(user_id);
       if (room_id && user_id) {
-        window.room = new Room('ws:localhost:9090', room_id, user_id);
+        window.room = new Room('ws:185.4.65.79:9090', room_id, user_id);
         show_room();
-      } else {
-        hide_room();
       }
+    } else {
+      hide_room();
     }
     return $('#go_form').on('submit', function() {
       room_id = $('#room_id').val();
