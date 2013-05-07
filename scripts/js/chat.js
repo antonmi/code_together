@@ -76,7 +76,7 @@
     Chat.prototype.append_to_chat = function(user, text) {
       var $div;
 
-      $div = $("<div class='message'><span class='user'></span><span class='text'></span></div>");
+      $div = $("<div class='message'><span class='user'></span>&nbsp<span class='text'></span></div>");
       $div.find('.user').html("" + user + ":");
       $div.find('.text').html(text);
       return this.$chat_table.append($div);

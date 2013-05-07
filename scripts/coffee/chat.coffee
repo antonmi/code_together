@@ -51,7 +51,7 @@ class window.Chat
     @$chat_table.scrollTop(@$chat_table[0].scrollHeight)
 
   append_to_chat: (user, text) ->
-    $div = $("<div class='message'><span class='user'></span><span class='text'></span></div>")
+    $div = $("<div class='message'><span class='user'></span>&nbsp<span class='text'></span></div>")
     $div.find('.user').html("#{user}:")
     $div.find('.text').html(text)
     @$chat_table.append($div)
