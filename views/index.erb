@@ -18,35 +18,45 @@
   <header class="container">
     <div class="row">
       <h1>&lt;/Code&gt; together</h1>
-       <form id="go_form" class='form-inline'>
+      <form id="go_form" class='form-inline'>
         <legend>Choose room and nickname</legend>
         <label class="control-label" for="room_id">Room Id</label>
         <input type="text" name="room_id" id="room_id" class="input-small"/>
         <label class="control-label" for="user_id">Nickname</label>
         <input type="text" name="user_id" id="user_id" class="input-small"/>
         <button type="submit" class="btn" id="go_button">Go!</button>
-    </form>
+      </form>
     </div>
   </header>
   <div id="main" class="container">
-      <div id="content">
-        <h2>Code here</h2>
-        <div id="text_editor_div"></div>
+    <div id="no_room">
+      <p>Simple example of collaborative coding.</p>
+      <p>Basic technologies:</p>
+      <ul>
+        <li>WebSocket server based on <a href="https://github.com/igrigorik/em-websocket/">em-websocket</a>.</li>
+        <li><a href="https://code.google.com/p/google-diff-match-patch/">diff-match-patch</a>&nbspalgorithm both on clients and server side.</li>
+        <li><a href="http://codemirror.net">CodeMirror</a>&nbspto highlight the code.</li>
+      </ul>
+      <p>If you happy with this simple demo, please visit LiveStudy project (in russian, in development) to see how we try to use collaborative tools for education.</p>
+    </div>
+    <div id="content">
+      <h2>Code here</h2>
+      <div id="text_editor_div"></div>
+    </div>
+    <div id="sidebar">
+      <div id='console'>
+        <h3>Console</h3>
+        <div id="info_bar_div"></div>
       </div>
-      <div id="sidebar">
-        <div id='console'>
-          <h3>Console</h3>
-          <div id="info_bar_div"></div>
-        </div>
-        <div id="chat_div"></div>
-      </div>
+      <div id="chat_div"></div>
+    </div>
   </div>
   <div id='push'></div>
 </div>
 <footer>
-    <div class="container">
-      copyright
-    </div>
+  <div class="container">
+    copyright
+  </div>
 </footer>
 <script type="text/javascript" src='scripts/js/room.js'></script>
 <script type="text/javascript" src='scripts/js/web_socket_client.js'></script>
