@@ -8,6 +8,6 @@ Basic technologies:
 
 3. [CodeMirror](http://codemirror.net) to highlight the code.
 
-See demo here: [code_together](http://antonmi.github.io/code_together) (in development)
+See demo here: [code_together](http://antonmi.github.io/code_together).
 
-If you happy with this simple demo, please visit [live-study.ru](http://live-study.ru) (in russian, in development) to see how we try to use collaborative tools for education.
+If you happy with this simple demo, please visit [LiveStudy](http://live-study.ru) project (in russian, in development) to see how we try to use collaborative tools for education.
