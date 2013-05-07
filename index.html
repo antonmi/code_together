@@ -17,7 +17,7 @@
 <div id="wrapper">
     <header class="container">
         <div class="row">
-            <h1>&lt;/Code&gt; together</h1>
+            <h1><a href="/">&lt;/Code&gt; together</a></h1>
             <form id="go_form" class='form-inline'>
                 <legend>Choose room and nickname</legend>
                 <label class="control-label" for="room_id">Room Id</label>
@@ -29,6 +29,16 @@
         </div>
     </header>
     <div id="main" class="container">
+        <div id="no_room">
+            <p>Simple example of collaborative coding.</p>
+            <p>Basic technologies:</p>
+            <ul>
+                <li>WebSocket server based on <a href="https://github.com/igrigorik/em-websocket/">em-websocket</a>.</li>
+                <li><a href="https://code.google.com/p/google-diff-match-patch/">diff-match-patch</a>&nbspalgorithm both on clients and server side.</li>
+                <li><a href="http://codemirror.net">CodeMirror</a>&nbspto highlight the code.</li>
+            </ul>
+            <p>If you happy with this simple demo, please visit <a href="http://live-study.ru">LiveStudy</a>&nbspproject to see how we try to use collaborative tools for education.</p>
+        </div>
         <div id="content">
             <h2>Code here</h2>
             <div id="text_editor_div"></div>
