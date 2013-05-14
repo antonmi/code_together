@@ -17,7 +17,6 @@
       var _this = this;
 
       this.post_connected_actions = post_connected_actions;
-      console.log("Connecting to " + this.uri);
       this.ws = new WebSocket(this.uri);
       this.ws.onopen = function() {
         if (typeof _this.post_connected_actions === "function") {

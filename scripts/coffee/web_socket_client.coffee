@@ -3,7 +3,7 @@ class window.WebSocketClient extends WebSocket
     @connect(@post_connected_actions)
 
   connect: (@post_connected_actions) ->
-    console.log "Connecting to #{@uri}"
+    #console.log "Connecting to #{@uri}"
     @ws = new WebSocket(@uri);
 
     @ws.onopen = =>

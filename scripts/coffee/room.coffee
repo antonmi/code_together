@@ -5,7 +5,6 @@ class window.Room
     @credentials = { room_id : @room_id, user_id : @user_id }
     @chat = new Chat($('#chat_div'), @)
     @text_editor = new TextEditor($('#text_editor_div'), @)
-    console.log 'initializing chats'
     @ws_client = new WebSocketClient(@uri, @)
     @report 'Initialized Successfully'
 

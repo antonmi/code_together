@@ -13,7 +13,6 @@
       };
       this.chat = new Chat($('#chat_div'), this);
       this.text_editor = new TextEditor($('#text_editor_div'), this);
-      console.log('initializing chats');
       this.ws_client = new WebSocketClient(this.uri, this);
       this.report('Initialized Successfully');
     }
