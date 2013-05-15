@@ -57,6 +57,11 @@ end
 # Process name of your daemon
 $0 = "server"
 
+#create folders
+require 'fileutils'
+FileUtils.mkdir_p 'tmp/pids'
+FileUtils.mkdir_p 'log'
+
 # Spawn a deamon
 Launcher.start fork, 'tmp/pids/server.pid', 'log/server.stdout.log', 'log/server.stderr.log'
 
