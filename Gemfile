@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'pry'
 gem 'sinatra'
+gem 'foreman'
 gem 'shotgun'
 gem 'eventmachine'
 gem 'coffee-script'
