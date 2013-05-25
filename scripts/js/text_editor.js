@@ -17,7 +17,7 @@
     }
 
     TextEditor.prototype.add_html = function() {
-      var key, options, value, _ref;
+      var key, options, value;
 
       options = [];
       _ref = CodeMirror.modes;
