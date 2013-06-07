@@ -1,6 +1,8 @@
+Code Together.
+
 Simple example of collaborative coding.
 
-Basic technologies:
+CodeTogether's basic technologies:
 
 1. WebSocket server based on [em-websocket](https://github.com/igrigorik/em-websocket/).
  
