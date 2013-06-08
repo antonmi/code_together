@@ -4,7 +4,7 @@ Simple example of collaborative coding.
 
 CodeTogether's basic technologies:
 
-1. WebSocket server based on [em-websocket](https://github.com/igrigorik/em-websocket/).
+1. WebSocket server based on [EventMachine](http://rubyeventmachine.com/) and ([em-websocket](https://github.com/igrigorik/em-websocket/).
  
 2. [diff-match-patch](https://code.google.com/p/google-diff-match-patch/) algorithm both on clients and server side.
 
