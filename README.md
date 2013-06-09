@@ -12,4 +12,4 @@
 
 ####See demo here: [Code Together](http://antonmi.github.io/code_together).
 
-####If you happy with this simple demo, please visit [LiveStudy](http://live-study.ru) project to see how we try to use collaborative tools for education.
+If you happy with this simple demo, please visit [LiveStudy](http://live-study.ru) project to see how we try to use collaborative tools for education.
