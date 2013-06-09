@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'pry'
+gem 'rake'
 gem 'sinatra'
 gem 'shotgun'
 gem 'eventmachine'
