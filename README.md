@@ -1,8 +1,8 @@
-Code Together.
+##Code Together.
 
-Simple example of collaborative coding.
+###Simple example of collaborative coding.
 
-CodeTogether's basic technologies:
+###CodeTogether's basic technologies:
 
 1. WebSocket server based on [EventMachine](http://rubyeventmachine.com/) and [em-websocket](https://github.com/igrigorik/em-websocket/).
  
