@@ -1,6 +1,6 @@
 ##Code Together.
 
-###Simple example of collaborative coding service.
+###Collaborative coding service.
 
 ###CodeTogether's basic technologies:
 
