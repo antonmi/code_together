@@ -2,3 +2,5 @@
 .rvmrc
 tmp
 log
+.ruby-gemset
+.ruby-version
