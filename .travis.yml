@@ -2,10 +2,9 @@ language: ruby
 rvm:
   - 2.1.0
 
+sudo: false
+script:
+  - rspec
 notifications:
-  email:
+  recipients:
     - anton.mishchuk@gmail.com
-
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
