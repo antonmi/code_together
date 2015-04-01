@@ -1,4 +1,4 @@
-##Code Together.
+##Code Together. [![Build Status](https://travis-ci.org/antonmi/code_together.svg?branch=master)](https://travis-ci.org/antonmi/code_together)
 
 ###Collaborative coding service.
 
@@ -12,4 +12,3 @@
 
 ####See demo here: [Code Together](http://antonmi.github.io/code_together).
 
-If you happy with this simple demo, please visit [LiveStudy](http://live-study.ru) project to see how we try to use collaborative tools for education.
