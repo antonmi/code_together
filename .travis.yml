@@ -4,7 +4,7 @@ rvm:
 
 sudo: false
 script:
-  - rspec spec
+  - RAILS_ENV=test bundle exec rspec
 notifications:
   recipients:
     - anton.mishchuk@gmail.com
